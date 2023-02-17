@@ -1,0 +1,75 @@
+import java.util.Scanner;
+
+public class Main{
+
+static int MAXSIZE = 5;       
+static int[] stack = new int[MAXSIZE];     
+static int top = -1;            
+
+static boolean isempty() {
+
+   if(top == -1)
+      return true;
+   else
+      return false;
+}
+   
+static boolean isfull() {
+
+   if(top == MAXSIZE)
+      return true;
+   else
+      return false;
+}
+
+static int peek() {
+   return stack[top];
+}
+
+static int pop() {
+   int data = 0;
+	
+   if(!isempty()) {
+      data = stack[top];
+      top = top - 1;   
+      return data;
+   } else {
+      System.out.print("Could not retrieve data, Stack is empty.\n");
+   }
+   return data;
+}
+
+    static int push(int data) {
+
+   if(!isfull()) {
+      top = top + 1;   
+      stack[top] = data;
+   } else {
+      System.out.print("Could not insert data, Stack is full.\n");
+   }
+   return data;
+}
+
+
+public static void main(String[] args) {
+    int num =0;
+    Scanner in = new Scanner(System.in);
+    
+    
+    for(int x = 0; x < MAXSIZE; x++){
+         System.out.print("Enter the element: ");
+         num = in.nextInt();
+         push(num);
+    }
+
+   System.out.printf("Element at top of the stack: %d\n" ,peek());
+   
+   System.out.print("Elements: \n");
+
+   // print stack data 
+   while(!isempty()) {
+      int data = pop();
+      System.out.printf(" %d ",data);
+   }
+}
+}
